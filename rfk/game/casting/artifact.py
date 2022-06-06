@@ -9,18 +9,18 @@ class Artifact(Actor):
     def __init__(self):
         """Constructs a new Artifact."""
         super().__init__()
-        self.message = ""
+        self.points = 0
     
-    def get_message(self):
+    def get_points(self):
         """Gets the artifact's message.
         Returns:
             string: The message.
         """
-        return self.message
+        return self.points
 
-    def set_message(self, message):
+    def set_points(self, points):
         """Updates the message to the given one.
         Args:
             message (string): The given message.
         """
-        self.message = message
+        self.point = points
