@@ -1,6 +1,5 @@
 from game.casting.actor import Actor
 
-
 class Artifact(Actor):
     """    
     The responsibility of an Artifact is to provide a score to the player.
