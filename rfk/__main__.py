@@ -94,7 +94,7 @@ def main():
         b = random.randint(0, 255)
         color = Color(r, g, b)
 
-        rocks = Artifact()
+        rocks = Rocks()
         rocks.set_text("O")
         rocks.set_font_size(FONT_SIZE)
         rocks.set_color(color)
@@ -102,9 +102,6 @@ def main():
         #artifact.set_message(message)
         cast.add_actor("rocks", rocks)
 
-    while gem_y and rock_y < 600:
-        gem_y +=5
-        rock_y +=5
 
 
 
