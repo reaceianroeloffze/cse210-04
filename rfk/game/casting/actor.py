@@ -1,3 +1,4 @@
+from pyray import pointer
 from game.shared.color import Color
 from game.shared.point import Point
 
@@ -100,13 +101,13 @@ class Actor:
         """
         self._font_size = font_size
     
-    def set_number(self, number):
+    def set_text(self, text):
         """Updates the text to the given value.
         
         Args:
             text (string): The given value.
         """
-        self._number = number
+        self._text = text
 
     def set_velocity(self, velocity):
         """Updates the velocity to the given one.

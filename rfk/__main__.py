@@ -1,5 +1,6 @@
 import os
 import random
+import pyray
 
 from game.casting.actor import Actor
 from game.casting.artifact import Artifact
@@ -18,17 +19,18 @@ FRAME_RATE = 12
 MAX_X = 900
 MAX_Y = 600
 CELL_SIZE = 15
-FONT_SIZE = 15
+FONT_SIZE = 20
 COLS = 60
 ROWS = 40
 CAPTION = "Robot Finds Kitten"
 DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt"
 WHITE = Color(255, 255, 255)
-DEFAULT_ARTIFACTS = 5
-
+DEFAULT_ARTIFACTS = 2
 
 def main():
-    
+
+    score = 0
+    somewhere = random.randint(0, 0)
     # create the cast
     cast = Cast()
     
@@ -41,9 +43,9 @@ def main():
     cast.add_actor("banners", banner)
     
     # create the robot
-    x = int(MAX_X / 2)
-    y = int(585)
-    position = Point(x, y)
+    robot_x = int(MAX_X / 2)
+    robot_y = int(585)
+    position = Point(robot_x, robot_y)
 
     robot = Actor()
     robot.set_text("#")
@@ -58,12 +60,12 @@ def main():
         messages = data.splitlines()
 
     for n in range(DEFAULT_ARTIFACTS):
-        text = chr(random.randint(33, 126))
-        message = messages[n]
+        #text = chr(random.randint(33, 126))
+        #message = messages[n]
 
-        x = random.randint(1, COLS - 1)
-        y = 0   #random.randint(1, ROWS - 1)
-        position = Point(x, y)
+        gem_x = random.randint(1, COLS - 1)
+        gem_y = 0   #random.randint(1, ROWS - 1)
+        position = Point(gem_x, gem_y)
         position = position.scale(CELL_SIZE)
 
         r = random.randint(0, 255)
@@ -72,12 +74,39 @@ def main():
         color = Color(r, g, b)
         
         artifact = Artifact()
-        artifact.set_text(text)
+        artifact.set_text("*")
         artifact.set_font_size(FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)
         #artifact.set_message(message)
         cast.add_actor("artifacts", artifact)
+
+    for n in range(DEFAULT_ARTIFACTS):
+        #text = chr(random.randint(33, 126))
+        #message = messages[n]
+        rock_x = random.randint(1, COLS - 1)
+        rock_y = 0   #random.randint(1, ROWS - 1)
+        position = Point(rock_x, rock_y)
+        position = position.scale(CELL_SIZE)
+        r = random.randint(0, 255)
+        g = random.randint(0, 255)
+        b = random.randint(0, 255)
+        color = Color(r, g, b)
+
+        rocks = Artifact()
+        rocks.set_text("O")
+        rocks.set_font_size(FONT_SIZE)
+        rocks.set_color(color)
+        rocks.set_position(position)
+        #artifact.set_message(message)
+        cast.add_actor("rocks", rocks)
+
+    while gem_y and rock_y < 600:
+        gem_y +=5
+        rock_y +=5
+
+
+
     
     # start the game
     keyboard_service = KeyboardService(CELL_SIZE)
