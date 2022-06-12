@@ -37,7 +37,7 @@ def main():
     
     # create the banner
     banner = Actor()
-    banner.set_text("")
+    banner.set_number(score)
     banner.set_font_size(FONT_SIZE)
     banner.set_color(WHITE)
     banner.set_position(Point(CELL_SIZE, 0))
@@ -87,6 +87,8 @@ def main():
         #message = messages[n]
         rock_x = random.randint(1, COLS - 1)
         rock_y = 0   #random.randint(1, ROWS - 1)
+        rock_y += 5
+        rock_y += 5
         position = Point(rock_x, rock_y)
         position = position.scale(CELL_SIZE)
         r = random.randint(0, 255)

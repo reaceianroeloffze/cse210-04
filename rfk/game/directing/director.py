@@ -58,7 +58,7 @@ class Director:
         
         for artifact in artifacts:
             if robot.get_position().equals(artifact.get_position()):
-                points = artifact.get_points()
+                points = artifact.get_points() +1
                 banner.set_number(points)    
         
     def _do_outputs(self, cast):

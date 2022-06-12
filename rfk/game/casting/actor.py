@@ -109,6 +109,14 @@ class Actor:
         """
         self._text = text
 
+    def set_number(self, number):
+        """Updates the text to the given value.
+
+        Args:
+            text (string): The given value.
+        """
+        self._number = number
+
     def set_velocity(self, velocity):
         """Updates the velocity to the given one.
         
