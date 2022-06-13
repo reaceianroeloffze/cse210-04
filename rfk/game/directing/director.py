@@ -71,6 +71,8 @@ class Director:
                     self._score.value -= 1
                     cast.remove_actor('artifacts', artifact)
                     
+            cast.add_actor('artifacts', artifact)
+                    
             artifact.move_next(max_x, max_y)
         self._score.update_score = self._total
         self._score.display_score()
