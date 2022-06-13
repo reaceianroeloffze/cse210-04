@@ -3,7 +3,7 @@ from pyray import *
 class Score:
     """
     displays score in the top left of the screen and sets
-    the text as white
+    the text
     attributes:
         self.value: sets initial score at 0
         self.colour: sets score board color
