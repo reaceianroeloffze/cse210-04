@@ -73,15 +73,9 @@ def main():
         artifact.set_font_size(FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)
-        artifact.set_velocity(Point(0,random.choice([3,5])))
+        artifact.set_velocity(Point(0,random.choice([3,7])))
         cast.add_actor("artifacts", artifact)
 
-    if Score.update_score == 2:
-        print("You WIN!!!")
-    elif Score.update_score == -1:
-        print("You Lose")
-        exit()
-        
     
     # start the game
     keyboard_service = KeyboardService(CELL_SIZE)
