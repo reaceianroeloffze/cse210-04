@@ -14,7 +14,7 @@ class Score:
         self.color = (255,0,0)
 
     def display_score(self):
-        #displays the current score
+        #displays the current score on score board
         draw_text(f"Score: {self.value}", 20, 20, 25, self.color)
 
     def update_score(self, points):
