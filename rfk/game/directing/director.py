@@ -60,9 +60,9 @@ class Director:
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
         
+        #Differentiate between rocks and gems to add or subtract points
         for artifact in artifacts:
             if robot.get_position().equals(artifact.get_position()):
-                ## Differentiate between rocks and gems to add or subtract points
                 if artifact.get_text() == '*':
                     self._score.value += 1
                     cast.remove_actor('artifacts', artifact)
