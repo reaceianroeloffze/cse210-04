@@ -20,7 +20,7 @@ class Director:
         self._keyboard_service = keyboard_service
         self._video_service = video_service
         self._total = 0
-        self.score = Score()
+        self._score = Score()
         
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
@@ -64,15 +64,16 @@ class Director:
             if robot.get_position().equals(artifact.get_position()):
                 ## Differentiate between rocks and gems to add or subtract points
                 if artifact.get_text() == '*':
-                    self._total = self._total + 1
+                    self._score.value += 1
                     cast.remove_actor('artifacts', artifact)
                     
                 else:
-                    self._total = self._total - 1
+                    self._score.value -= 1
                     cast.remove_actor('artifacts', artifact)
                     
             artifact.move_next(max_x, max_y)
-        self.score.display_score()
+        self._score.update_score = self._total
+        self._score.display_score()
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
         
