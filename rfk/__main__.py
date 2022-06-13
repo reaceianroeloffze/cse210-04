@@ -13,6 +13,7 @@ from game.services.video_service import VideoService
 from game.shared.color import Color
 from game.shared.point import Point
 
+from game.services.score import Score
 
 FRAME_RATE = 12
 MAX_X = 900
@@ -22,9 +23,9 @@ FONT_SIZE = 15
 COLS = 60
 ROWS = 40
 CAPTION = "Greed"
-DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt"
+#DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt"
 WHITE = Color(255, 255, 255)
-DEFAULT_ARTIFACTS = 10
+DEFAULT_ARTIFACTS = 15
 
 
 def main():
@@ -75,6 +76,11 @@ def main():
         artifact.set_velocity(Point(0,random.choice([3,5])))
         cast.add_actor("artifacts", artifact)
 
+    if Score.update_score == 2:
+        print("You WIN!!!")
+    elif Score.update_score == -1:
+        print("You Lose")
+        exit()
         
     
     # start the game

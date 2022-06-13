@@ -1,6 +1,8 @@
 import pyray
 from game.shared.point import Point
 
+from game.casting.artifact import Artifact
+
 
 class KeyboardService:
     """Detects player input. 
