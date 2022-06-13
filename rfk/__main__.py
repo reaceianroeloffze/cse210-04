@@ -73,7 +73,7 @@ def main():
         artifact.set_font_size(FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)
-        artifact.set_velocity(Point(0,random.choice([3,7])))
+        artifact.set_velocity(Point(0,random.choice([3,5])))
         cast.add_actor("artifacts", artifact)
 
     
