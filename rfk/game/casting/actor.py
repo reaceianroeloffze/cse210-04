@@ -7,7 +7,6 @@ class Actor:
     
     The responsibility of Actor is to keep track of its appearance, position and velocity in 2d 
     space.
-
     Attributes:
         _text (string): The text to display
         _font_size (int): The font size to use.

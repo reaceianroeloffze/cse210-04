@@ -1,3 +1,5 @@
+from game.services.score import Score
+
 class Director:
     """A person who directs the game. 
     
@@ -17,6 +19,8 @@ class Director:
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
+        self._total = 0
+        self._score = Score()
         
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
@@ -58,9 +62,22 @@ class Director:
         
         for artifact in artifacts:
             if robot.get_position().equals(artifact.get_position()):
-                message = artifact.get_message()
-                banner.set_text(message)    
-        
+                ## Differentiate between rocks and gems to add or subtract points
+                if artifact.get_text() == '*':
+                    self._score.value += 1
+                    cast.remove_actor('artifacts', artifact)
+                    
+                else:
+                    self._score.value -= 1
+                    cast.remove_actor('artifacts', artifact)
+
+            cast.add_actor('artifacts', artifact)
+                    
+            artifact.move_next(max_x, max_y)
+        self._score.update_score = self._total
+        self._score.display_score()
+
+
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
         
